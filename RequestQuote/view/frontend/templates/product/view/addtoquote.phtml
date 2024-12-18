@@ -1,0 +1,17 @@
+<?php
+/** @var \Cochez\RequestQuote\Block\Quote\Product\View  $block */
+/** @var \Magento\Catalog\Model\Product $_product */
+?>
+<?php $productId = $block->getProduct()->getId(); ?>
+<?php $buttonTitle = __('Add to Quote'); ?>
+
+<?php //TODO Aqui agregar validaciones al recuperar el producto y verificar modulo enabled ?>
+
+<?php // TODO se quito implementacion planteada similar a button AddToCart para poder realizar algunas pruebas a la bd a tiempo para la entrega ?>
+<div class="actions-toolbar">
+    <div class="primary">
+        <a href="<?= $block->escapeUrl($block->getUrl('requestquote/quote/addtoquote', ['id' => $productId,'qty' => 1])) ?>" class="action primary add">
+            <span><?= $block->escapeHtml(__($buttonTitle)) ?></span>
+        </a>
+    </div>
+</div>

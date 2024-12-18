@@ -1,0 +1,43 @@
+<?php
+/** @var Cochez\RequestQuote\Block\Quote\History $block */
+?>
+<?php $_orders = $block->getOrders(); ?>
+<?= $block->getChildHtml('info') ?>
+<?php if ($_orders && count($_orders)) : ?>
+    <div class="table-wrapper quotes-history">
+        <table class="data table table-quote-items history" id="my-quote-table">
+            <caption class="table-caption"><?= $block->escapeHtml(__('Quote')) ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col id"><?= $block->escapeHtml(__('Quote test #')) ?></th>
+                    <th scope="col" class="col date"><?= $block->escapeHtml(__('Date')) ?></th>
+                    <th scope="col" class="col total"><?= $block->escapeHtml(__('Total Quote')) ?></th>
+                    <th scope="col" class="col status"><?= $block->escapeHtml(__('Status')) ?></th>
+                    <th scope="col" class="col actions"><?= $block->escapeHtml(__('Action')) ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($_orders as $_order) : ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtml(__('Quote #')) ?>" class="col id"><?= $block->escapeHtml($_order->getQuoteId()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Date')) ?>" class="col date"><?= /* @noEscape */ $block->formatDate($_order->getCreatedAt()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Total Quote')) ?>" class="col total"><?= /* @noEscape */ $_order->getTotalPrice() ?></td>
+                        <!-- TODO Agregar status obtenidas del cambio de estado en quotes -->
+<!--                        <td data-th="--><?php //= $block->escapeHtml(__('Status')) ?><!--" class="col status">--><?php //= $block->escapeHtml($_order->getStatusLabel()) ?><!--</td>-->
+                        <td data-th="<?= $block->escapeHtml(__('Status')) ?>" class="col status"><?= $block->escapeHtml(__('Pending')) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                            <a href="<?= $block->escapeUrl($block->getViewUrl($_order)) ?>" class="action view">
+                                <span><?= $block->escapeHtml(__('View Quote')) ?></span>
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()) : ?>
+        <div class="order-products-toolbar toolbar bottom"><?= $block->getPagerHtml() ?></div>
+    <?php endif ?>
+<?php else : ?>
+    <div class="message info empty"><span><?= $block->escapeHtml($block->getEmptyOrdersMessage()) ?></span></div>
+<?php endif ?>

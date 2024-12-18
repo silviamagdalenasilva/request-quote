@@ -1,0 +1,44 @@
+<?php
+?>
+<?php /** @var \Cochez\RequestQuote\Block\Quote\View $block */?>
+<div class="order-details-items ordered">
+    <?php $_order = $block->getOrder() ?>
+
+    <div class="order-title">
+        <strong><?= $block->escapeHtml(__('Items Quote')) ?></strong>
+<!--        --><?php //if (!empty($_order->getTracksCollection()->getItems())) : ?>
+<!--            --><?php //= $block->getChildHtml('tracking-info-link') ?>
+<!--        --><?php //endif; ?>
+    </div>
+
+    <?= $block->getChildHtml('order_items') ?>
+    <?php // TODO buscar quotes items en la tabla  request_quote_item ?>
+<?php //if ($this->helper(\Magento\GiftMessage\Helper\Message::class)->isMessagesAllowed('order', $_order)
+//        && $_order->getGiftMessageId()
+//    ) : ?>
+<!--    <div class="block block-order-details-gift-message">-->
+<!--        <div class="block-title"><strong>--><?php //= $block->escapeHtml(__('Gift Message for This Order')) ?><!--</strong></div>-->
+<!--        --><?php
+//        $_giftMessage = $this->helper(\Magento\GiftMessage\Helper\Message::class)->getGiftMessageForEntity($_order);
+//        ?>
+<!--        <div class="block-content">-->
+<!--            <dl class="item-options">-->
+<!--                <dt class="item-sender"><strong class="label">--><?php //= $block->escapeHtml(__('From')) ?><!--</strong>--><?php //= $block->escapeHtml($_giftMessage->getSender()) ?><!--</dt>-->
+<!--                <dt class="item-recipient"><strong class="label">--><?php //= $block->escapeHtml(__('To')) ?><!--</strong>--><?php //= $block->escapeHtml($_giftMessage->getRecipient()) ?><!--</dt>-->
+<!--                <dd class="item-message">-->
+<!--                    --><?php //= /* @noEscape */
+//                    $this->helper(\Magento\GiftMessage\Helper\Message::class)->getEscapedGiftMessage($_order) ?>
+<!--                </dd>-->
+<!--            </dl>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    --><?php //endif; ?>
+
+    <div class="actions-toolbar">
+        <div class="secondary">
+            <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>">
+                <span><?= $block->escapeHtml($block->getBackTitle()) ?></span>
+            </a>
+        </div>
+    </div>
+</div>

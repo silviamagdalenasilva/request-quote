@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var \Cochez\RequestQuote\Block\Quote\View $block
+ */
+?>
+<?php //if ($block->displayPrintQuoteView()): ?>
+    <form action="<?php echo $block->escapeHtml($block->getPrintUrl()) ?>" method="post">
+        <?php echo $block->getBlockHtml('formkey'); ?>
+        <div class="quote main actions clearfix">
+            <button
+                type="submit" name="print_quote_action"
+                value="print_quote"
+                title="<?php echo $block->escapeHtml(__('Print Quote')) ?>"
+                class="action requestquote-print-quote-btn">
+                <span><?php echo $block->escapeHtml(__('Print Quote')) ?></span>
+            </button>
+        </div>
+    </form>
+<?php // endif; ?>

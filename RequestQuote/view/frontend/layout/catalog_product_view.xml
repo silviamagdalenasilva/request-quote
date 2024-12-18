@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout.xsd">
+    <body>
+        <referenceContainer name="product.info.form.content">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.form.addtoquote" as="addtoquote" after="product.info.addtocart" template="Cochez_RequestQuote::product/view/addtoquote.phtml">
+            </block>
+        </referenceContainer>
+        <referenceBlock name="product.info.addtocart">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.addtoquote" as="addtoquote"  template="Cochez_RequestQuote::product/view/addtoquote.phtml">
+            </block>
+        </referenceBlock>
+        <referenceBlock name="product.info.addtocart.additional">
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.additional.addtoquote" as="addtoquote"  template="Cochez_RequestQuote::product/view/addtoquote.phtml">
+            </block>
+        </referenceBlock>
+    </body>
+</layout>

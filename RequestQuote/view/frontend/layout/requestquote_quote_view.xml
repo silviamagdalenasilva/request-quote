@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="page.main.title">
+            <block class="Cochez\RequestQuote\Block\Quote\View" name="quote.actions.top.print" template="Cochez_RequestQuote::quote/print.phtml"/>
+            <container name="quote.actions.container" htmlTag="div" htmlClass="actions-toolbar order-actions-toolbar"/>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Cochez\RequestQuote\Block\Quote\View" name="requestquote.quote.view" cacheable="false">
+                <container name="requestquote.quote.view.info" as="info" label="Quote View Info"/>
+                <container name="requestquote.quote.view.extra.column.header" as="extra.column.header" label="Quote View Extra Column Header"/>
+            </block>
+            <block class="Magento\Customer\Block\Account\Dashboard" name="customer.account.link.back" template="Magento_Customer::account/link/back.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,29 @@
+{
+    "request_quote": {
+        "column": {
+            "quote_id": true,
+            "customer_id": true,
+            "total_price": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "REQUEST_QUOTE_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    },
+    "request_quote_item": {
+        "column": {
+            "quote_item_id": true,
+            "quote_id": true,
+            "product_id": true,
+            "product_name": true,
+            "price": true,
+            "quantity": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "REQUEST_QUOTE_ITEM_QUOTE_ID_REQUEST_QUOTE_QUOTE_ID": true,
+            "REQUEST_QUOTE_ITEM_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID": true
+        }
+    }
+}
